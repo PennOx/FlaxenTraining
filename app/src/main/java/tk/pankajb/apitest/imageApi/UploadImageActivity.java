@@ -1,4 +1,4 @@
-package tk.pankajb.apitest;
+package tk.pankajb.apitest.imageApi;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -18,8 +18,9 @@ import com.bumptech.glide.Glide;
 
 import java.io.IOException;
 
+import tk.pankajb.apitest.R;
 import tk.pankajb.apitest.databinding.ActivityUploadImageBinding;
-import tk.pankajb.apitest.halpers.ImageEncoder;
+import tk.pankajb.apitest.helpers.UriEncoder;
 import tk.pankajb.apitest.viewModels.MainViewModel;
 
 public class UploadImageActivity extends AppCompatActivity {
@@ -34,11 +35,13 @@ public class UploadImageActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         binding = DataBindingUtil.setContentView(this, R.layout.activity_upload_image);
 
+        getSupportActionBar().setTitle("Image Upload api test");
+
         viewModel = new ViewModelProvider(this, new ViewModelProvider.Factory() {
             @NonNull
             @Override
             public <T extends ViewModel> T create(@NonNull Class<T> modelClass) {
-                return (T) new MainViewModel();
+                return (T) new MainViewModel(getApplication());
             }
         }).get(MainViewModel.class);
 
@@ -83,7 +86,7 @@ public class UploadImageActivity extends AppCompatActivity {
         } else {
             try {
 
-                viewModel.uploadImage(ImageEncoder.encodeImage(getContentResolver(), viewModel.getImage().getValue()));
+                viewModel.uploadImage(UriEncoder.encodeImage(getContentResolver(), viewModel.getImage().getValue()));
 
             } catch (IOException e) {
                 e.printStackTrace();

@@ -1,10 +1,12 @@
 package tk.pankajb.apitest.viewModels;
 
+import android.app.Application;
 import android.net.Uri;
 
+import androidx.annotation.NonNull;
+import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
-import androidx.lifecycle.ViewModel;
 
 import java.util.List;
 
@@ -13,9 +15,10 @@ import tk.pankajb.apitest.interfaces.UsersFetchListener;
 import tk.pankajb.apitest.models.User;
 import tk.pankajb.apitest.repositories.MainRepository;
 
-public class MainViewModel extends ViewModel {
+public class MainViewModel extends AndroidViewModel {
 
-    private final MutableLiveData<List<User>> usersList;
+    private final MutableLiveData<List<User>> usersListFromApi;
+    private final MutableLiveData<List<User>> usersListFromRoom;
     private final MainRepository repo;
     private final MutableLiveData<String> message;
     private final MutableLiveData<Boolean> userAdded;
@@ -23,22 +26,39 @@ public class MainViewModel extends ViewModel {
     private final MutableLiveData<Uri> imageUri;
     private final MutableLiveData<Boolean> imageUploaded;
 
-    public MainViewModel() {
-        repo = MainRepository.getInstance();
-        usersList = new MutableLiveData<>();
+    public MainViewModel(@NonNull Application application) {
+        super(application);
+        repo = MainRepository.getInstance(application.getApplicationContext());
+        usersListFromApi = new MutableLiveData<>();
+        usersListFromRoom = new MutableLiveData<>();
         message = new MutableLiveData<>();
         userAdded = new MutableLiveData<>();
         imageUri = new MutableLiveData<>();
         imageUploaded = new MutableLiveData<>();
-        fetchUsers();
+        fetchUsersFromApi();
+        fetchUsersFromRoom();
     }
 
-    private void fetchUsers() {
-        repo.fetchUsers(new UsersFetchListener() {
+    private void fetchUsersFromRoom() {
+        repo.fetchUsersFromRoom(new UsersFetchListener(){
+            @Override
+            public void onSuccess(List<User> userList) {
+                usersListFromRoom.postValue(userList);
+            }
+
+            @Override
+            public void onFailed(String e) {
+                message.postValue(e);
+            }
+        });
+    }
+
+    private void fetchUsersFromApi() {
+        repo.fetchUsersFromApi(new UsersFetchListener() {
 
             @Override
             public void onSuccess(List<User> userList) {
-                usersList.postValue(userList);
+                usersListFromApi.postValue(userList);
             }
 
             @Override
@@ -56,13 +76,17 @@ public class MainViewModel extends ViewModel {
         return userAdded;
     }
 
-    public void addUser(User u) {
+    public void addUserToApi(User u) {
 
-        repo.addUser(u, () -> userAdded.postValue(true));
+        repo.addUserToApi(u, () -> userAdded.postValue(true));
     }
 
-    public LiveData<List<User>> getUsers() {
-        return usersList;
+    public LiveData<List<User>> getUsersFromApi() {
+        return usersListFromApi;
+    }
+
+    public LiveData<List<User>> getUsersFromRoom(){
+        return usersListFromRoom;
     }
 
     public LiveData<Uri> getImage() {
@@ -98,5 +122,9 @@ public class MainViewModel extends ViewModel {
     public void resetImageUpload() {
         imageUploaded.postValue(false);
         imageUri.postValue(null);
+    }
+
+    public void addUserToRoom(User user) {
+        repo.addUserToRoom(user, () -> userAdded.postValue(true));
     }
 }

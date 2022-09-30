@@ -26,13 +26,15 @@ public class MapActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        getSupportActionBar().setTitle("Current location service");
+
         binding = DataBindingUtil.setContentView(this, R.layout.activity_map);
         binding.setLocationCoordinates(new LocationCoordinates());
 
         binding.mapLocationStartServiceButton.setOnClickListener(this::startLocationService);
         binding.mapLocationStopServiceButton.setOnClickListener(this::stopLocationService);
 
-        MainRepository.getInstance().getCoordinates().observe(this,
+        MainRepository.getInstance(getApplicationContext()).getCoordinates().observe(this,
                 locationCoordinates -> binding.setLocationCoordinates(locationCoordinates));
 
     }

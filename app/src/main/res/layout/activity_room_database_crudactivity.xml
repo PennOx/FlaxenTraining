@@ -10,7 +10,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".MainActivity">
+        tools:context=".roomTest.RoomDatabaseCRUDActivity">
 
         <LinearLayout
             android:id="@+id/main_linear_layout"
@@ -24,38 +24,19 @@
             app:layout_constraintTop_toTopOf="parent">
 
             <Button
-                android:id="@+id/main_users_api"
+                android:id="@+id/room_view_users_button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_margin="8dp"
-                android:text="Users Api" />
+                android:text="View users" />
 
             <Button
-                android:id="@+id/main_upload_image"
+                android:id="@+id/room_add_users_button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Upload Image" />
+                android:text="Add users" />
 
-            <Button
-                android:id="@+id/main_map_location"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Map Coordinates" />
-
-<!--            <Button-->
-<!--                android:id="@+id/main_firebase_crud"-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:text="Firebase CRUD"/>-->
-
-            <Button
-                android:id="@+id/main_room_crud"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Room database CRUD"/>
 
         </LinearLayout>
-
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

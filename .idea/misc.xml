@@ -4,10 +4,16 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Users/rajso/OneDrive/Desktop/PennOx/APITest/app/src/main/res/layout/activity_add_user.xml" value="0.25833333333333336" />
+        <entry key="..\:/Users/rajso/OneDrive/Desktop/PennOx/APITest/app/src/main/res/layout/activity_add_user_to_api.xml" value="0.25833333333333336" />
         <entry key="..\:/Users/rajso/OneDrive/Desktop/PennOx/APITest/app/src/main/res/layout/activity_main.xml" value="0.24427083333333333" />
         <entry key="..\:/Users/rajso/OneDrive/Desktop/PennOx/APITest/app/src/main/res/layout/activity_map.xml" value="0.25833333333333336" />
+        <entry key="..\:/Users/rajso/OneDrive/Desktop/PennOx/APITest/app/src/main/res/layout/activity_room_add_user.xml" value="0.25833333333333336" />
+        <entry key="..\:/Users/rajso/OneDrive/Desktop/PennOx/APITest/app/src/main/res/layout/activity_room_database_crudactivity.xml" value="0.25435897435897437" />
+        <entry key="..\:/Users/rajso/OneDrive/Desktop/PennOx/APITest/app/src/main/res/layout/activity_room_view_users.xml" value="0.25833333333333336" />
         <entry key="..\:/Users/rajso/OneDrive/Desktop/PennOx/APITest/app/src/main/res/layout/activity_upload_image.xml" value="0.25833333333333336" />
+        <entry key="..\:/Users/rajso/OneDrive/Desktop/PennOx/APITest/app/src/main/res/layout/activity_users_api_main.xml" value="0.25833333333333336" />
         <entry key="..\:/Users/rajso/OneDrive/Desktop/PennOx/APITest/app/src/main/res/layout/activity_view_users.xml" value="0.25833333333333336" />
+        <entry key="..\:/Users/rajso/OneDrive/Desktop/PennOx/APITest/app/src/main/res/layout/activity_view_users_from_api.xml" value="0.25833333333333336" />
         <entry key="..\:/Users/rajso/OneDrive/Desktop/PennOx/APITest/app/src/main/res/layout/single_user_layout.xml" value="0.25833333333333336" />
       </map>
     </option>

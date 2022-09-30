@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="tk.pankajb.apitest">
+    package="tk.pankajb.apitest" >
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_BACKGROUND_LOCATION" />
-    <uses-permission android:name="android.permission.FOREGROUND_SERVICE"/>
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
 
     <application
         android:allowBackup="true"
@@ -15,7 +15,30 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.APITest">
+        android:theme="@style/Theme.APITest" >
+
+        <activity
+            android:name=".usersApi.UsersApiMainActivity"
+            android:exported="false"
+            android:parentActivityName=".MainActivity"/>
+
+        <activity
+            android:name=".roomTest.RoomViewUsersActivity"
+            android:exported="false"
+            android:parentActivityName=".roomTest.RoomDatabaseCRUDActivity" />
+        <activity
+            android:name=".roomTest.RoomAddUserActivity"
+            android:exported="false"
+            android:parentActivityName=".roomTest.RoomDatabaseCRUDActivity" />
+        <activity
+            android:name=".roomTest.RoomDatabaseCRUDActivity"
+            android:exported="false"
+            android:parentActivityName=".MainActivity" />
+        <activity
+            android:name=".firebaseTest.FirebaseCRUDMainActivity"
+            android:exported="false"
+            android:parentActivityName=".MainActivity" />
+
         <service
             android:name=".services.CurrentLocationService"
             android:enabled="true"
@@ -24,21 +47,27 @@
 
         <activity
             android:name=".MapActivity"
-            android:exported="false" />
-        <activity
-            android:name=".UploadImageActivity"
-            android:exported="false" />
-        <activity
-            android:name=".ViewUsersActivity"
             android:exported="false"
             android:parentActivityName=".MainActivity" />
+
         <activity
-            android:name=".AddUserActivity"
+            android:name=".imageApi.UploadImageActivity"
             android:exported="false"
             android:parentActivityName=".MainActivity" />
+
+        <activity
+            android:name=".usersApi.ViewUsersFromApiActivity"
+            android:exported="false"
+            android:parentActivityName=".usersApi.UsersApiMainActivity" />
+
+        <activity
+            android:name=".usersApi.AddUserActivityToApi"
+            android:exported="false"
+            android:parentActivityName=".usersApi.UsersApiMainActivity" />
+
         <activity
             android:name=".MainActivity"
-            android:exported="true">
+            android:exported="true" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

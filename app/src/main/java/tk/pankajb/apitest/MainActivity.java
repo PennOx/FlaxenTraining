@@ -7,6 +7,12 @@ import android.view.View;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 
+import tk.pankajb.apitest.firebaseTest.FirebaseCRUDMainActivity;
+import tk.pankajb.apitest.imageApi.UploadImageActivity;
+import tk.pankajb.apitest.roomTest.RoomDatabaseCRUDActivity;
+import tk.pankajb.apitest.usersApi.AddUserActivityToApi;
+import tk.pankajb.apitest.usersApi.UsersApiMainActivity;
+import tk.pankajb.apitest.usersApi.ViewUsersFromApiActivity;
 import tk.pankajb.apitest.databinding.ActivityMainBinding;
 
 public class MainActivity extends AppCompatActivity {
@@ -18,11 +24,29 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main);
 
-        binding.mainAddUser.setOnClickListener(this::addUser);
-        binding.mainViewUsers.setOnClickListener(this::viewUsers);
+        getSupportActionBar().setTitle("Main Activity");
+
+       binding.mainUsersApi.setOnClickListener(this::usersApi);
         binding.mainUploadImage.setOnClickListener(this::uploadImage);
         binding.mainMapLocation.setOnClickListener(this::mapLocation);
+        binding.mainRoomCrud.setOnClickListener(this::roomCRUD);
+//        binding.mainFirebaseCrud.setOnClickListener(this::firebaseCRUD);
 
+    }
+
+    private void usersApi(View view) {
+        Intent intent = new Intent(this, UsersApiMainActivity.class);
+        startActivity(intent);
+    }
+
+    private void firebaseCRUD(View view) {
+        Intent intent = new Intent(this, FirebaseCRUDMainActivity.class);
+        startActivity(intent);
+    }
+
+    private void roomCRUD(View view) {
+        Intent intent = new Intent(this, RoomDatabaseCRUDActivity.class);
+        startActivity(intent);
     }
 
     private void mapLocation(View view) {
@@ -35,13 +59,4 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    private void viewUsers(View view) {
-        Intent intent = new Intent(this, ViewUsersActivity.class);
-        startActivity(intent);
-    }
-
-    private void addUser(View view) {
-        Intent intent = new Intent(this, AddUserActivity.class);
-        startActivity(intent);
-    }
 }

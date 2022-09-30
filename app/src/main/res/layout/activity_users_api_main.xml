@@ -10,10 +10,10 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".MainActivity">
+        tools:context=".usersApi.UsersApiMainActivity">
 
         <LinearLayout
-            android:id="@+id/main_linear_layout"
+            android:id="@+id/users_main_linear_layout"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:gravity="center"
@@ -24,38 +24,19 @@
             app:layout_constraintTop_toTopOf="parent">
 
             <Button
-                android:id="@+id/main_users_api"
+                android:id="@+id/main_add_user"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"
-                android:text="Users Api" />
+                android:text="Add User" />
 
             <Button
-                android:id="@+id/main_upload_image"
+                android:id="@+id/main_view_users"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Upload Image" />
-
-            <Button
-                android:id="@+id/main_map_location"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Map Coordinates" />
-
-<!--            <Button-->
-<!--                android:id="@+id/main_firebase_crud"-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:text="Firebase CRUD"/>-->
-
-            <Button
-                android:id="@+id/main_room_crud"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Room database CRUD"/>
+                android:text="View Users" />
 
         </LinearLayout>
-
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

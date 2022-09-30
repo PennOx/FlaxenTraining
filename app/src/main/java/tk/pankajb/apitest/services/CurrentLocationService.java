@@ -69,7 +69,7 @@ public class CurrentLocationService extends Service {
     @Override
     public void onCreate() {
         super.onCreate();
-        repo = MainRepository.getInstance();
+        repo = MainRepository.getInstance(getApplicationContext());
 
 
         locationProviderClient = LocationServices.getFusedLocationProviderClient(this);

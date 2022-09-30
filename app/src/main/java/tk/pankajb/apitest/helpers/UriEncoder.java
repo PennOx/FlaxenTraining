@@ -1,4 +1,4 @@
-package tk.pankajb.apitest.halpers;
+package tk.pankajb.apitest.helpers;
 
 import android.content.ContentResolver;
 import android.graphics.Bitmap;
@@ -9,7 +9,7 @@ import android.util.Base64;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 
-public class ImageEncoder {
+public class UriEncoder {
 
     public static String encodeImage(ContentResolver resolver, Uri uri) throws IOException {
         Bitmap bitmap = MediaStore.Images.Media.getBitmap(resolver, uri);
