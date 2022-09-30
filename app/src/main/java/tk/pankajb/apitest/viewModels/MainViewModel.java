@@ -10,6 +10,7 @@ import androidx.lifecycle.MutableLiveData;
 
 import java.util.List;
 
+import tk.pankajb.apitest.interfaces.DeleteUserListener;
 import tk.pankajb.apitest.interfaces.ImageUploadListener;
 import tk.pankajb.apitest.interfaces.UsersFetchListener;
 import tk.pankajb.apitest.models.User;
@@ -126,5 +127,14 @@ public class MainViewModel extends AndroidViewModel {
 
     public void addUserToRoom(User user) {
         repo.addUserToRoom(user, () -> userAdded.postValue(true));
+    }
+
+    public void deleteRoomUser(int i) {
+        repo.deleteRoomUser(usersListFromRoom.getValue().get(i),new DeleteUserListener(){
+            @Override
+            public void onDeleted() {
+                fetchUsersFromRoom();
+            }
+        });
     }
 }

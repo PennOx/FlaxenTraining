@@ -14,6 +14,7 @@ import retrofit2.Callback;
 import tk.pankajb.apitest.api.APIClient;
 import tk.pankajb.apitest.api.APIInterface;
 import tk.pankajb.apitest.interfaces.AddUserListener;
+import tk.pankajb.apitest.interfaces.DeleteUserListener;
 import tk.pankajb.apitest.interfaces.ImageUploadListener;
 import tk.pankajb.apitest.interfaces.UsersFetchListener;
 import tk.pankajb.apitest.models.ImageUploadResponse;
@@ -118,6 +119,13 @@ public class MainRepository {
         LocalDatabase.databaseWriteExecutor.execute(() -> {
             List<User> list = localDatabase.userDao().getAllUsers();
             listener.onSuccess(list);
+        });
+    }
+
+    public void deleteRoomUser(User user, DeleteUserListener deleteUserListener) {
+        LocalDatabase.databaseWriteExecutor.execute(() -> {
+            localDatabase.userDao().deleteUser(user);
+            deleteUserListener.onDeleted();
         });
     }
 }

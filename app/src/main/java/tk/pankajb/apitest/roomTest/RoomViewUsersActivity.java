@@ -16,6 +16,7 @@ import java.util.List;
 import tk.pankajb.apitest.R;
 import tk.pankajb.apitest.adapters.UsersRecyclerAdapter;
 import tk.pankajb.apitest.databinding.ActivityRoomViewUsersBinding;
+import tk.pankajb.apitest.interfaces.OnClickListener;
 import tk.pankajb.apitest.models.User;
 import tk.pankajb.apitest.viewModels.MainViewModel;
 
@@ -41,7 +42,12 @@ public class RoomViewUsersActivity extends AppCompatActivity {
 
         viewModel.getUsersFromRoom().observe(this,
                 userList -> {
-                    UsersRecyclerAdapter adapter = new UsersRecyclerAdapter(userList);
+                    UsersRecyclerAdapter adapter = new UsersRecyclerAdapter(userList, new OnClickListener<Integer>() {
+                        @Override
+                        public void onClick(Integer i) {
+                            viewModel.deleteRoomUser(i);
+                        }
+                    });
                     binding.viewUsersRoomApiRecycler.setAdapter(adapter);
         });
 

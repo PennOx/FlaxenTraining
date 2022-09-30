@@ -36,7 +36,7 @@ public class ViewUsersFromApiActivity extends AppCompatActivity {
         binding.viewUsersApiRecycler.setLayoutManager(new LinearLayoutManager(this));
 
         viewModel.getUsersFromApi().observe(this, users -> {
-            UsersRecyclerAdapter adapter = new UsersRecyclerAdapter(users);
+            UsersRecyclerAdapter adapter = new UsersRecyclerAdapter(users, null);
             binding.viewUsersApiRecycler.setAdapter(adapter);
         });
 

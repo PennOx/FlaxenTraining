@@ -1,6 +1,7 @@
 package tk.pankajb.apitest.adapters;
 
 import android.view.LayoutInflater;
+import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
@@ -11,14 +12,17 @@ import java.util.List;
 
 import tk.pankajb.apitest.R;
 import tk.pankajb.apitest.databinding.SingleUserLayoutBinding;
+import tk.pankajb.apitest.interfaces.OnClickListener;
 import tk.pankajb.apitest.models.User;
 
 public class UsersRecyclerAdapter extends RecyclerView.Adapter<UsersRecyclerAdapter.UsersViewHolder> {
 
     private final List<User> users;
+    private final OnClickListener<Integer> listener;
 
-    public UsersRecyclerAdapter(List<User> users) {
+    public UsersRecyclerAdapter(List<User> users, OnClickListener<Integer> listener) {
         this.users = users;
+        this.listener = listener;
     }
 
     @NonNull
@@ -36,6 +40,7 @@ public class UsersRecyclerAdapter extends RecyclerView.Adapter<UsersRecyclerAdap
     @Override
     public void onBindViewHolder(@NonNull UsersViewHolder holder, int position) {
         holder.setUser(users.get(position));
+        holder.setOnClick(listener, position);
     }
 
     @Override
@@ -59,6 +64,15 @@ public class UsersRecyclerAdapter extends RecyclerView.Adapter<UsersRecyclerAdap
 
         public void setUser(User user) {
             binding.setUser(user);
+        }
+
+        public void setOnClick(OnClickListener<Integer> listener, int position) {
+           if (listener == null){
+               binding.singleDeleteButton.setVisibility(View.GONE);
+           }else {
+               binding.singleDeleteButton.setVisibility(View.VISIBLE);
+               binding.singleDeleteButton.setOnClickListener(view -> listener.onClick(position));
+           }
         }
     }
 }
